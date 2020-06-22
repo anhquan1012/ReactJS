@@ -7,37 +7,25 @@ class App extends Component {
   constructor() {
     super();
     this.todoItems = [
-      'Xem',
-      'Nghe nhạc',
-      'Đi đá bóng'
+      {title: 'Xem phim', isComplete: true},
+      {title: 'Nghe nhạc', isComplete: true},
+      {title: 'Đi đá bóng'}
     ];
   }
 
   render(){
     return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <TodoItem title="Xem phim"/>
-        <TodoItem title="Nghe nhạc"/>
-        <TodoItem title="Đi đá bóng"/> */}
+      
 
-        {
-          this.todoItems.map((item, index) => <TodoItem key={index} title={item}/>)
-        }
+      {
+        this.todoItems.length > 0 && this.todoItems.map((item, index) => (<TodoItem key={index} item={item}/>))
+      }
+      {
+        this.todoItems.length === 0 && "Nothing here."
+      }
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
     </div>
     );
   }
