@@ -1,12 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TodoItem from './components/TodoItem'
 
-function App() {
-  return (
+class App extends Component {
+  constructor() {
+    super();
+    this.todoItems = [
+      'Xem',
+      'Nghe nhạc',
+      'Đi đá bóng'
+    ];
+  }
+
+  render(){
+    return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        {/* <TodoItem title="Xem phim"/>
+        <TodoItem title="Nghe nhạc"/>
+        <TodoItem title="Đi đá bóng"/> */}
+
+        {
+          this.todoItems.map((item, index) => <TodoItem key={index} title={item}/>)
+        }
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -20,7 +39,8 @@ function App() {
         </a>
       </header>
     </div>
-  );
+    );
+  }
 }
 
 export default App;
